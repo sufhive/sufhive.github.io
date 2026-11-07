@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GifDrop — Video to GIF Maker · SufHive</title>
-<meta name="description" content="GifDrop converts videos to high-quality GIFs in seconds — entirely on your device. No uploads, no servers, no watermark. Free on Google Play, by SufHive." />
-<meta name="theme-color" content="#05060f" />
+<title>GifDrop — Video to GIF &amp; Sticker Maker · SufHive</title>
+<meta name="description" content="GifDrop turns videos into GIFs in seconds and makes animated stickers for WhatsApp, on your device. No uploads and no watermark. Free on Google Play, by SufHive." />
+<meta name="theme-color" content="#F7F7FF" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="GifDrop — Video to GIF Maker" />
-<meta property="og:description" content="Convert videos to GIFs in seconds, entirely on-device. No uploads. No watermark. Ever." />
+<meta property="og:title" content="GifDrop — Video to GIF &amp; Sticker Maker" />
+<meta property="og:description" content="Turn videos into GIFs and animated stickers for WhatsApp, on your device. No uploads. No watermark." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="assets/og-image.png" />
+<meta property="og:image" content="https://sufhive.github.io/assets/gifdrop/feature_graphic.jpg" />
 
 <!-- Favicon (reuse your GifDrop icon) -->
 <link rel="icon" type="image/png" href="../assets/sufhive/favicon-16.png" />
@@ -88,12 +88,6 @@
   .topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 0 0; }
   .brand { font-family: var(--display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); }
   .brand-logo { width: 28px; height: 28px; border-radius: 7px; object-fit: contain; display: block; }
-  .topbar a.ghost {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted);
-    text-decoration: none; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
-    transition: color .2s, border-color .2s;
-  }
-  .topbar a.ghost:hover { color: var(--text); border-color: var(--line-hi); }
 
   /* hero */
   .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 5vw, 60px); align-items: center; padding: clamp(48px, 9vw, 96px) 0 clamp(40px, 7vw, 76px); }
@@ -120,14 +114,13 @@
   /* phone frame in hero */
   .hero-media { display: flex; justify-content: center; }
   .phone {
-    position: relative; width: min(280px, 78vw); aspect-ratio: 9 / 19.5;
-    border-radius: 34px; padding: 10px;
-    background: linear-gradient(160deg, #1a1e42, #0a0c20);
+    position: relative; width: min(340px, 82vw); aspect-ratio: 9 / 16;
+    border-radius: 26px; overflow: hidden;
     border: 1px solid var(--line-hi);
-    box-shadow: 0 40px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.55);
   }
   .phone-screen {
-    width: 100%; height: 100%; border-radius: 26px; overflow: hidden;
+    width: 100%; height: 100%; overflow: hidden;
     background: var(--deep); display: flex; align-items: center; justify-content: center;
     position: relative;
   }
@@ -180,7 +173,7 @@
   /* screenshot gallery */
   .shots { margin-top: 48px; display: flex; gap: 18px; overflow-x: auto; padding: 8px 4px 20px; scroll-snap-type: x mandatory; }
   .shot {
-    flex: 0 0 auto; width: 232px; aspect-ratio: 9 / 19.5; border-radius: 26px; overflow: hidden;
+    flex: 0 0 auto; width: min(270px, 74vw); aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden;
     border: 1px solid var(--line); background: var(--deep); scroll-snap-align: center; position: relative;
     box-shadow: 0 20px 50px rgba(0,0,0,0.4);
   }
@@ -226,7 +219,8 @@
   .final { text-align: center; padding: clamp(48px, 9vw, 96px) 0 clamp(20px, 4vw, 40px); }
   .final h2 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5.5vw, 3.2rem); letter-spacing: -0.02em; line-height: 1.05; }
   .final p { color: var(--muted); font-weight: 300; margin: 18px auto 30px; max-width: 40ch; font-size: 1.05rem; }
-  .formats { margin-top: 26px; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; color: var(--faint); }
+  .legal-note { margin-top: 10px; font-size: 0.78rem; color: var(--faint); }
+  .final .formats { margin: 26px auto 0; max-width: none; font-family: var(--mono); font-size: 0.74rem; font-weight: 400; letter-spacing: 0.06em; color: var(--faint); }
 
   /* footer */
   .foot { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
@@ -250,14 +244,37 @@
     .hero-cta, .no-nos { justify-content: center; }
     .hero-media { order: -1; }
   }
-  @media (max-width: 560px) {
-    .topbar a.ghost { display: none; }
-  }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
     html { scroll-behavior: auto; }
   }
+
+  /* white-blue theme */
+  :root {
+    --void: #F7F7FF; --deep: #FFFFFF; --surface: #FFFFFF; --surface-hi: #EEF0FF;
+    --line: rgba(30,27,75,0.10); --line-hi: rgba(79,70,229,0.30);
+    --cyan: #4F46E5; --blue: #4F46E5; --violet: #7C3AED; --magenta: #A855F7;
+    --text: #14132B; --muted: #55557A; --faint: #76769A;
+    --grad: linear-gradient(110deg, #4F46E5, #7C3AED);
+  }
+  body { background: linear-gradient(135deg, #FBFBFF 0%, #DDDEFF 100%) fixed; }
+  .orb.a { background: radial-gradient(circle, rgba(103,232,249,0.5), transparent 68%); }
+  .orb.b { background: radial-gradient(circle, rgba(165,180,252,0.75), transparent 68%); }
+  .orb.c { background: radial-gradient(circle, rgba(196,181,253,0.35), transparent 70%); }
+  .h1 .grad { background: linear-gradient(110deg, #4F46E5, #7C3AED, #4F46E5); background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; }
+  .hero-icon { box-shadow: 0 14px 34px rgba(79,70,229,0.28); }
+  .no-no { background: rgba(255,255,255,0.65); }
+  .btn-play { color: #FFF; box-shadow: 0 14px 30px rgba(79,70,229,0.3); }
+  .btn-ghost { justify-content: center; gap: 10px; padding: 15px 24px; border-radius: 15px; background: #FFF; color: #4338CA; border: 1.5px solid rgba(79,70,229,0.45); font-family: var(--body); font-weight: 500; font-size: 1rem; letter-spacing: 0; box-shadow: 0 10px 24px rgba(79,70,229,0.14); transition: color .2s, border-color .2s, background .2s, transform .25s, box-shadow .25s; } .btn-ghost:hover { color: #3730A3; background: #F5F5FF; border-color: #4F46E5; transform: translateY(-1px); box-shadow: 0 14px 30px rgba(79,70,229,0.22); } .btn-ghost svg { width: 18px; height: 18px; }
+  @supports not selector(::-webkit-scrollbar) { html, .shots { scrollbar-width: thin; scrollbar-color: #6D5AE6 rgba(79,70,229,0.08); } } ::-webkit-scrollbar { width: 11px; height: 9px; } ::-webkit-scrollbar-track { background: #EEF0FF; } ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #22D3EE, #4F46E5 55%, #7C3AED); border-radius: 999px; border: 2px solid #EEF0FF; } ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #06B6D4, #4338CA 55%, #6D28D9); } .shots::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #22D3EE, #4F46E5 55%, #7C3AED); } ::-webkit-scrollbar-corner { background: transparent; }
+  .phone { border-color: rgba(255,255,255,0.9); box-shadow: 0 34px 80px rgba(49,46,129,0.28); }
+  .feature, .premium-card { background: rgba(255,255,255,0.78); box-shadow: 0 14px 40px rgba(49,46,129,0.09); }
+  .feature .fi { background: rgba(79,70,229,0.08); border-color: rgba(79,70,229,0.2); }
+  .step { background: rgba(255,255,255,0.6); }
+  .shot { border-color: rgba(255,255,255,0.9); box-shadow: 0 20px 50px rgba(49,46,129,0.2); }
+  .video-frame { box-shadow: 0 30px 70px rgba(49,46,129,0.25); background: #FFF; }
+  .premium-tag { background: rgba(79,70,229,0.07); border-color: rgba(79,70,229,0.25); }
 </style>
 </head>
 
@@ -275,37 +292,35 @@
       <img class="brand-logo" src="../assets/sufhive/sufhive-logo.png" alt="SufHive logo" width="28" height="28" />
       SufHive
     </a>
-    <a class="ghost" href="https://play.google.com/store/apps/details?id=com.sufhive.gifdrop" target="_blank" rel="noopener">Google Play ↗</a>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div>
       <img class="hero-icon reveal d1" src="../assets/gifdrop/app-icon.png" alt="GifDrop app icon" width="76" height="76" />
-      <p class="eyebrow reveal d2">Video to GIF Maker · Android</p>
+      <p class="eyebrow reveal d2">Video to GIF &amp; Stickers · Android</p>
       <h1 class="h1 reveal d2">Any video to a <span class="grad">GIF</span>, in seconds.</h1>
-      <p class="lede reveal d3">GifDrop converts videos to high-quality GIFs entirely on your device. No uploads, no servers, no watermark. Your videos never leave your phone.</p>
+      <p class="lede reveal d3">GifDrop turns your videos into high-quality GIFs, then into animated stickers for WhatsApp, right on your device. No uploads and no watermark.</p>
       <div class="hero-cta reveal d3">
         <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.sufhive.gifdrop" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 14 12 3.6 21.7c-.4.2-.9-.1-.9-.6V2.9c0-.5.5-.8.9-.6Z"/><path d="m16.3 9.5 3.6 2c.8.5.8 1.6 0 2l-3.6 2L13 12l3.3-2.5Z"/></svg>
           Get it on Google Play
         </a>
-        <a class="btn-ghost" href="#demo">Watch the demo</a>
+        <a class="btn-ghost" href="#demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.2v7.6l6-3.8-6-3.8Z" fill="currentColor" stroke-linejoin="round"/></svg>Watch the demo</a>
       </div>
       <div class="no-nos reveal d4">
         <span class="no-no">No uploads</span>
         <span class="no-no">No watermark</span>
         <span class="no-no">No account</span>
-        <span class="no-no">Works offline</span>
+        <span class="no-no">Convert offline</span>
+        <span class="no-no">WhatsApp stickers</span>
       </div>
     </div>
 
     <div class="hero-media reveal d3">
       <div class="phone">
         <div class="phone-screen">
-          <!-- Replace src with your hero screenshot; delete the .ph div once the image is in -->
-          <img src="../assets/gifdrop/shots/Editor-2.png" alt="GifDrop converting a video to a GIF" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="ph" style="display:none;"><div class="hex"></div>assets/shots/hero.png</div>
+          <img src="../assets/gifdrop/shots/store/screenshot_1_gif.webp" alt="GifDrop home screen with a grid of GIFs" />
         </div>
       </div>
     </div>
@@ -344,9 +359,9 @@
         <p>Your recent GIFs are saved for quick access. Tap to preview, re-share, or save to your gallery whenever you need.</p>
       </div>
       <div class="feature reveal d3">
-        <div class="fi"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><circle cx="12" cy="12" r="4"/></svg></div>
-        <h3>Built to stay fast</h3>
-        <p>Sensible quality caps keep every conversion quick on mid-range phones — speed is the feature, not an afterthought.</p>
+        <div class="fi"><svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8l-6 6H6a2 2 0 0 1-2-2Z"/><path d="M20 14h-4a2 2 0 0 0-2 2v4"/></svg></div>
+        <h3>Animated stickers for WhatsApp</h3>
+        <p>Turn your GIFs into animated stickers, build your own packs, and add them to WhatsApp or WhatsApp Business once a pack has 3 stickers.</p>
       </div>
     </div>
   </section>
@@ -355,14 +370,17 @@
   <section class="section" id="screens">
     <p class="section-eyebrow">A look inside</p>
     <h2 class="section-title">See it in action</h2>
-    <p class="section-sub">Swipe through the flow — from picking a clip to sharing a clean GIF.</p>
+    <p class="section-sub">Swipe through the flow, from picking a clip to sharing a GIF or making a sticker.</p>
 
     <div class="shots">
-      <!-- Paste your Play Store screenshots at these paths (portrait). Add or remove .shot blocks to match how many you have. -->
-      <div class="shot"><img src="../assets/gifdrop/shots/Home.png" alt="GifDrop — convert screen" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;><div class=&quot;hex&quot;></div>assets/shots/1.png</div>';" /></div>
-      <div class="shot"><img src="../assets/gifdrop/shots/Picker.png" alt="GifDrop — editor screen" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;><div class=&quot;hex&quot;></div>assets/shots/2.png</div>';" /></div>
-      <div class="shot"><img src="../assets/gifdrop/shots/Editor-1.png" alt="GifDrop — privacy screen" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;><div class=&quot;hex&quot;></div>assets/shots/3.png</div>';" /></div>
-      <div class="shot"><img src="../assets/gifdrop/shots/Preview.png" alt="GifDrop — share screen" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;><div class=&quot;hex&quot;></div>assets/shots/4.png</div>';" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_1_gif.webp" alt="Home screen with a grid of GIFs. Turn any video into a GIF" width="720" height="1280" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_2_stickers.webp" alt="Sticker pack screen. Make animated stickers for WhatsApp" width="720" height="1280" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_3_trim.webp" alt="Editor with the trim bar. Trim the perfect moment" width="720" height="1280" loading="lazy" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_4_quality.webp" alt="Frame rate, resolution and speed settings. Control every detail" width="720" height="1280" loading="lazy" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_5_fit.webp" alt="Create sticker screen with emojis. Fit or fill, tag with emojis" width="720" height="1280" loading="lazy" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_6_private.webp" alt="Select video screen. Made on your device" width="720" height="1280" loading="lazy" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_7_share.webp" alt="Finished GIF with share and save buttons. Clean GIFs, no watermark" width="720" height="1280" loading="lazy" /></div>
+      <div class="shot"><img src="../assets/gifdrop/shots/store/screenshot_8_premium.webp" alt="GifDrop Premium card with Buy Once button. Pay once, no subscription" width="720" height="1280" loading="lazy" /></div>
     </div>
   </section>
 
@@ -381,12 +399,12 @@
   <!-- DEMO VIDEO -->
   <section class="section" id="demo">
     <p class="section-eyebrow">Demo</p>
-    <h2 class="section-title">Watch a clip become a GIF</h2>
+    <h2 class="section-title">Watch a clip become a GIF and a sticker</h2>
     <div class="video-wrap reveal d1">
       <div class="video-frame">
         <iframe
-          src="https://www.youtube.com/embed/L7GVVEgNDCQ"
-          title="GifDrop demo — video to GIF in seconds"
+          src="https://www.youtube-nocookie.com/embed/k7cINh9C_Lg"
+          title="GifDrop: video to GIF maker and animated stickers for WhatsApp"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
@@ -406,15 +424,16 @@
         <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Extend clips to 8 seconds (vs 6s on free)</li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>360p / 15fps quality always unlocked</li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Unlimited GIF history</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Up to 5 sticker packs with 30 stickers each (vs 1 pack with 5 stickers on free)</li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>One-time purchase — no renewals</li>
       </ul>
-      <p class="premium-note">No forced subscriptions. No dark patterns. No watermarks. Just a clean, fast GIF maker.</p>
+      <p class="premium-note">No forced subscriptions. No dark patterns. No watermarks. Just a clean, fast GIF and sticker maker.</p>
     </div>
   </section>
 
   <!-- FINAL CTA -->
   <section class="final">
-    <h2>Make your first GIF today.</h2>
+    <h2>Make your first GIF or sticker today.</h2>
     <p>Free to start. On-device. No watermark. Available now on Google Play.</p>
     <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.sufhive.gifdrop" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 14 12 3.6 21.7c-.4.2-.9-.1-.9-.6V2.9c0-.5.5-.8.9-.6Z"/><path d="m16.3 9.5 3.6 2c.8.5.8 1.6 0 2l-3.6 2L13 12l3.3-2.5Z"/></svg>
@@ -432,6 +451,7 @@
       <a href="mailto:sufhive@gmail.com">Contact</a>
     </div>
     <p class="copyright">© 2026 SufHive · Built by Sufian Ahmad</p>
+    <p class="legal-note">GifDrop is an independent app and is not affiliated with or endorsed by WhatsApp.</p>
   </footer>
 
 </div>
